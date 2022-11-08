@@ -3,7 +3,7 @@ import 'package:my_app/theme/colors/app_colors.dart';
 import 'package:my_app/theme/typography/text_styles.dart';
 import 'package:my_app/theme/white_space/space_helper.dart';
 
-class BoxButton extends StatelessWidget {
+class MyButton extends StatelessWidget {
   final String title;
   final bool disabled;
   final bool busy;
@@ -11,7 +11,7 @@ class BoxButton extends StatelessWidget {
   final bool outline;
   final Widget? leading;
 
-  const BoxButton({
+  const MyButton({
     Key? key,
     required this.title,
     this.disabled = false,
@@ -21,7 +21,7 @@ class BoxButton extends StatelessWidget {
   })  : outline = false,
         super(key: key);
 
-  const BoxButton.outline({
+  const MyButton.outline({
     Key? key,
     required this.title,
     this.onTap,
@@ -34,44 +34,47 @@ class BoxButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 350),
-        width: double.infinity,
-        height: 48,
-        alignment: Alignment.center,
-        decoration: !outline
-            ? BoxDecoration(
-                color: !disabled ?kcPrimary  : kcDisabled,
-                borderRadius: BorderRadius.circular(8),
-              )
-            : BoxDecoration(
-                color: Colors.transparent,
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(
-                  color: kcPrimary,
-                  width: 1,
-                )),
-        child: !busy
-            ? Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  if (leading != null) leading!,
-                  if (leading != null) hSpaceMin,
-                  Text(
-                    title,
-                    style: bodyStyle.copyWith(
-                      fontWeight: !outline ? FontWeight.bold : FontWeight.w400,
-                      color: !outline ? Colors.white : kcPrimary,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: GestureDetector(
+        onTap: onTap,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 350),
+          width: double.infinity,
+          height: 48,
+          alignment: Alignment.center,
+          decoration: !outline
+              ? BoxDecoration(
+                  color: !disabled ?kcPrimary  : kcDisabled,
+                  borderRadius: BorderRadius.circular(8),
+                )
+              : BoxDecoration(
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(
+                    color: kcPrimary,
+                    width: 1,
+                  )),
+          child: !busy
+              ? Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (leading != null) leading!,
+                    if (leading != null) hSpaceMin,
+                    Text(
+                      title,
+                      style: bodyStyle.copyWith(
+                        fontWeight: !outline ? FontWeight.bold : FontWeight.w400,
+                        color: !outline ? Colors.white : kcPrimary,
+                      ),
                     ),
-                  ),
-                ],
-              )
-            :const CircularProgressIndicator(
-                strokeWidth: 8,
-                valueColor: AlwaysStoppedAnimation(Colors.white),
-              ),
+                  ],
+                )
+              :const CircularProgressIndicator(
+                  strokeWidth: 4,
+                  valueColor: AlwaysStoppedAnimation(Colors.white),
+                ),
+        ),
       ),
     );
   }
