@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:my_app/features/account/screens/account_screen.dart';
 import 'package:my_app/features/cart/screens/cart_screen.dart';
 import 'package:my_app/features/favorites/screens/favorites_screen.dart';

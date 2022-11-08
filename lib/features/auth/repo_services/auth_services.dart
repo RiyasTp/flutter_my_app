@@ -11,7 +11,7 @@ class AuthServices {
   AuthServices._internal();
 
   Future<User?> login(LoginData credentials) async {
-    await Future.delayed(Duration(seconds: 3), () {
+    await Future.delayed(const Duration(seconds: 3), () {
       // <-- Delay here
     });
 
@@ -23,7 +23,6 @@ class AuthServices {
           email: 'email',
           refreshToken: 'refreshToken');
     }
-    print('completed');
     return null;
   }
 

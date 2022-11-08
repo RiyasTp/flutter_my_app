@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/features/auth/providers/login_provider.dart';
 import 'package:my_app/features/auth/widgets/question_button.dart';
@@ -14,7 +13,6 @@ class LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loginProvider = context.read<LoginProvider>();
-    print('building form');
     return Form(
       key: loginProvider.loginFormKey,
       child: Column(

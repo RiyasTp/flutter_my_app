@@ -7,7 +7,7 @@ class MyButton extends StatelessWidget {
   final String title;
   final bool disabled;
   final bool busy;
-  final void Function()? onTap;
+  final VoidCallback? onTap;
   final bool outline;
   final Widget? leading;
 

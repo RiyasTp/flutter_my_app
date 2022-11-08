@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:my_app/features/auth/providers/login_provider.dart';
-import 'package:my_app/features/auth/screens/login_screen.dart';
 import 'package:my_app/theme/colors/app_colors.dart';
 import 'package:provider/provider.dart';
 

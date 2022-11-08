@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/features/auth/models/login_model.dart';
 import 'package:my_app/features/auth/models/signup_model.dart';
 import 'package:my_app/features/auth/repo_services/auth_services.dart';
-import 'package:my_app/features/auth/screens/login_screen.dart';
 import 'package:my_app/features/home/screens/main_screen.dart';
 
 class SignUpProvider extends ChangeNotifier {
