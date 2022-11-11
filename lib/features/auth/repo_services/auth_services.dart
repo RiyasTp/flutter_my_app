@@ -1,6 +1,7 @@
 import 'package:my_app/features/auth/models/login_model.dart';
 import 'package:my_app/features/auth/models/signup_model.dart';
 import 'package:my_app/features/auth/models/user_auth_model.dart';
+import 'package:my_app/utils/secure_storage/secured_storage_services.dart';
 
 class AuthServices {
   //to singleton
@@ -10,6 +11,8 @@ class AuthServices {
   }
   AuthServices._internal();
 
+
+
   Future<User?> login(LoginData credentials) async {
     await Future.delayed(const Duration(seconds: 3), () {
       // <-- Delay here
@@ -18,9 +21,9 @@ class AuthServices {
     if (credentials.email == 'riyastp04@gmail.com' &&
         credentials.password == '1234') {
       return User(
-          token: 'token',
+          token: 'riyas',
           name: 'riyas',
-          email: 'email',
+          email: credentials.email,
           refreshToken: 'refreshToken');
     }
     return null;
@@ -30,6 +33,7 @@ class AuthServices {
     await Future.delayed(const Duration(seconds: 3), () {
       // <-- Delay here
     });
+
     return User(
         token: 'token',
         name: details.name,
@@ -37,7 +41,18 @@ class AuthServices {
         refreshToken: 'refreshToken');
   }
 
-  checkLogined() {}
+  Future<User?> checkLogined() async{
+    final token = await SecuredStorage().read('token');
+    if(token==null) return null;
+    if(token=='riyas'){
+      return User(
+          token: 'riyas',
+          name: 'riyas',
+          email: 'riyastp04@gmail.com',
+          refreshToken: 'refreshToken');
+    }
+    return null;
+  }
 
   logOut() {}
 

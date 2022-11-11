@@ -4,6 +4,7 @@ import 'package:my_app/features/auth/repo_services/auth_services.dart';
 import 'package:my_app/features/auth/screens/login_screen.dart';
 import 'package:my_app/features/auth/screens/signup_screen.dart';
 import 'package:my_app/features/home/screens/main_screen.dart';
+import 'package:my_app/utils/extensions/string_extensions.dart';
 
 class LoginProvider extends ChangeNotifier {
   final loginFormKey = GlobalKey<FormState>();
@@ -44,13 +45,13 @@ class LoginProvider extends ChangeNotifier {
 
   String? validateEmail(String? value) {
     if (value == null || value.isEmpty) return 'Enter Email';
+    if(!value.isEmail) return 'Please enter a valid email';
     return null;
   }
 
   String? validatePassword(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Enter password';
-    }
+    if (value == null || value.isEmpty) return 'Enter password';
+    if(!value.isBetween(6, 20)) return 'Password must be 6-20 characters';
     return null;
   }
 
